@@ -1,8 +1,0 @@
-\beamer@sectionintoc {1}{一些不严谨且没用的闲话}{3}{0}{1}
-\beamer@sectionintoc {2}{线性空间}{8}{0}{2}
-\beamer@subsectionintoc {2}{1}{准备概念}{9}{0}{2}
-\beamer@subsectionintoc {2}{2}{线性空间的概念}{14}{0}{2}
-\beamer@subsectionintoc {2}{3}{线性空间的基与维数}{19}{0}{2}
-\beamer@subsectionintoc {2}{4}{子空间与子空间的直和}{25}{0}{2}
-\beamer@subsectionintoc {2}{5}{线性空间的同构}{29}{0}{2}
-\beamer@subsectionintoc {2}{6}{商空间}{33}{0}{2}
