@@ -8,6 +8,7 @@
 %\usepackage[colorlinks, linkcolor=red]{hyperref}
 %\usepackage{theorem}
 \usepackage{graphicx}
+\usepackage{braket}
 %\usetheme{Hannover}
 \usetheme{Berkeley}
 
@@ -358,7 +359,7 @@
 \subsection{线性空间的同构}
 \frame{\subsectionpage}
 
-\begin{frame}{线性空的的同构}
+\begin{frame}{线性空间的同构}
 \begin{defi}
 	同构映射(保持加法和数乘的双射)\quad 同构
 \end{defi}
@@ -439,5 +440,138 @@
 \begin{frame}{例题}
 	证明上一页写出的性质.
 \end{frame}
+
+\section{建议}
+
+\frame{\sectionpage}
+
+\begin{frame}
+	\frametitle{一些建议}
+	线性空间的梳理已经结束了, 很显然我们的时间不够把所有内容这样详细地梳理一遍,
+	但我希望我们之前做的事情可以给大家一些提示: 对于线性代数其他部分的知识,
+	你也可以用类似的方式自己梳理一遍, 梳理的时候注意不同模块之间的联系及其在理论体系中的位置.
+	注意: 总结梳理的工作不能做得像搭积木, 一块一块地堆砌, 而应该像织毛衣,
+	在各种内容之间建立起联系.\par
+	下面提供一个联系不同内容的实例.
+\end{frame}
+
+\section{对偶空间, 内积和Dirac符号}
+\frame{\sectionpage}
+
+\newcommand{\Hom}[2]{\mathrm{Hom}\left(#1,#2\right)}
+
+\begin{frame}
+	\frametitle{对偶空间\quad 狄拉克符号}
+	\begin{defi}[对偶空间]
+		$V'=\Hom{V}{\mathbb{F}}$\footnote{我故意使用和教材上不一样的符号,
+		一是为了向著名青年数学家, 教我线代的方博汉老师致敬, 二是为了让你们习惯
+		表达同一数学概念有各种不同的符号这一事实.}
+	\end{defi}
+	\begin{defi}[Dirac符号]
+		线性空间$V$称为右矢空间, 其中的元素称为右矢(ket), 记作$\ket{v}\in V$;
+		其对偶空间称为左矢空间, 其中的元素称为左矢(bra)\footnote{它就是左矢,
+		没有其他意思, 你们千万不要多想. 这个名称的来源是把bracket拆开,
+		左边表示左矢, 右边表示右矢.}, 记作$\bra{v}\in V'$.
+	\end{defi}
+	\begin{prob}
+		上面的记号中, $\ket{v}$和$\bra{v}$有没有确定的联系或对应?
+	\end{prob}
+\end{frame}
+
+\def\DC{\stackrel{\mathrm{D.C.}}{\longleftrightarrow}}
+
+\begin{frame}
+	\frametitle{对偶基, 对偶对应}
+	\begin{defi}[对偶基]
+		设$\ket{v_1},\cdots,\ket{v_n}$是$V$的一组基,
+		则我们定义$\bra{v_1},\cdots,\bra{v_n}$是其对偶基, 如果
+		$\braket{v_i|v_j}=\delta_{ij}$
+	\end{defi}
+	\begin{defi}[对偶对应]
+		基于对偶基可以定义对偶对应: $\forall \lambda_i,\lambda_j\in\mathbb{F}$,
+		\[\lambda_i^*\bra{v_i}+\lambda_j^*\bra{v_j}\DC\lambda_i\ket{v_i}+\lambda_j\ket{v_j}.\footnote{容易证明这个对应对实数域上线性空间是同构映射, 对复数域上线性空间,
+		它是一种结构类似于同构映射的双射, 不妨称其为共轭同构映射, 这样定义的好处,
+		我们很快就将看出.}\]
+	\end{defi}
+\end{frame}
+
+\begin{frame}
+	\frametitle{线性映射在bra和ket上的分解}
+	\begin{exmp}[线性函数在对偶基上分解]
+		我们知道, 给出一个线性函数在每个基$\ket{v_i}$上的值$f_i$, 这个函数随即确定.
+		显然, $f=f_i\bra{v_i}$\footnote{从这里开始, 如无特殊声明, 我们使用Einstein求和约定.}
+	\end{exmp}
+	\begin{exmp}[一般线性映射的分解]
+		设$A\in\Hom{V}{W}$, $A\ket{v_j}=a_{ij}\ket{w_i}$, 则
+		\[A=a_{ij}\ket{w_i}\bra{v_j}.\]
+	\end{exmp}
+\end{frame}
+
+\def\dim{\mathrm{dim}}
+\def\ker{\mathrm{ker}}
+\def\Im{\mathrm{Im}}
+
+\begin{frame}
+	\frametitle{对偶映射}
+	\begin{defi}[对偶映射]
+		$A\in\Hom{V}{W}$, $A$的对偶映射$A'\in\Hom{W'}{V'}$满足
+		\[A'(\bra{w'})\ket{v}=\bra{w}\left(A'\ket{v}\right).\]
+	\end{defi}
+	\begin{rmk}
+		我们只要使Dirac符号满足结合律, 即$\left(\bra{w}A\right)\ket{v}=\bra{w}\left(A\ket{v}\right)$,
+		并且要求作用在bra上的线性映射写在右边, 作用在ket上的线性映射写在左边,
+		我们就可以用完全一样的Dirac记号表示一个映射和它的对偶映射.
+	\end{rmk}
+	\begin{thrm}
+		$\dim\ \Im\  A=\dim\ \Im\  A'.$
+	\end{thrm}
+\end{frame}
+
+\begin{frame}
+	\frametitle{映射的矩阵表示}
+	$A\in\Hom{V}{W}$, 若选取了$V$和$W$的一组基, 一个线性映射将坐标$(x_i,\cdots,x_n)^T$
+	表示的向量映射到$(y_1,\cdots,v_m)^T$表示的向量, 则线性映射的矩阵$\tilde{A}$满足
+	\[(y_1,\cdots,y_m)^T=\tilde{A}(x_1,\cdots,x_n)^T,\]
+	或$y_i=a_{ij}x_j.$\par
+	\begin{thrm}
+		映射的矩阵和其对偶映射的矩阵互为转置.
+	\end{thrm}
+\end{frame}
+
+\begin{frame}
+	\frametitle{矩阵的秩}
+	\begin{defi}[矩阵的行秩和列秩]
+	\end{defi}
+	\begin{thrm}
+		矩阵的列秩与它表示的线性映射的象的维数相等.
+	\end{thrm}
+	\begin{thrm}
+		矩阵的行秩等于列秩.
+	\end{thrm}
+\end{frame}
+
+\begin{frame}
+	\frametitle{内积}
+	\begin{defi}[内积]
+		$\mathbb{F}$上的线性空间$V$中的元素形成有序的元素对
+		$\left(\ket{u},\ket{v}\right)$, 元素对到$\mathbb{F}$上的映射被称为内积如果
+		它有如下性质:
+		\begin{enumerate}
+			\item 正定性;
+			\item 对第一个元素的线性性;
+			\item 共轭对称.
+		\end{enumerate}
+	\end{defi}
+	有了内积, 就可以选取标准正交基, 按照之前的定义建立对偶对应.
+	此时不同标准正交基下都满足$\braket{v_i|v_j}=\delta_{ij}$.
+	此时可以验证$(u,v)=\braket{v|u}$.
+\end{frame}
+
+% \begin{frame}
+% 	\frametitle{习题}
+% 	\begin{prob}
+		
+% 	\end{prob}
+% \end{frame}
 
 \end{document}
